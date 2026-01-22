@@ -1,15 +1,13 @@
 import winston from 'winston'
 
-/**
- * Create a logger instance to write log messages in JSON format.
- *
- * @param loggerName - a name of a logger that will be added to all messages
- */
-export function createLogger(loggerName) {
+export function createLogger(name) {
   return winston.createLogger({
     level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { name: loggerName },
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple()
+    ),
+    defaultMeta: { service: name },
     transports: [new winston.transports.Console()]
   })
 }

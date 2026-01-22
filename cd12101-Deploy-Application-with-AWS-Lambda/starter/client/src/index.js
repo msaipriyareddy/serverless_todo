@@ -11,9 +11,9 @@ ReactDOM.render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
-    redirectUri={window.location.origin}
+    redirectUri="http://localhost:3000"
     audience="https://todo-api"
-    scope="read:todo write:todo delete:todo"
+    scope="openid profile email"
   >
     <App />
   </Auth0Provider>,
